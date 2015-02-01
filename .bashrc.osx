@@ -1,0 +1,92 @@
+
+# MacPorts Installer addition on 2011-09-07_at_18:38:53: adding an appropriate PATH variable for use with MacPorts.
+#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+PS1="\[\033[1;32m\][\u@\h:\[\033[1;36m\]\w]\[\033[1;31m\]$\[\033[0m\] "
+#you may uncomment the following lines if you want `ls' to be colorized:
+ export CLICOLOR=1
+ export LSCOLORS=ExFxCxDxBxegedabagacad
+ alias ls='ls' 
+ alias ll='ls -l'
+ alias la='ls -la'
+ alias l='ls -lA'
+#
+# Some more alias to avoid making mistakes:
+ alias rm='rm -i'
+#GNU # alias rm='mv -f --backup=numbered --target-directory ~/.Trash'
+ alias cp='cp -i'
+ alias mv='mv -i'
+
+# brew settings
+
+# python settings
+export PYTHONPATH=/usr/local/lib/python2.7:/usr/local/lib/python3.4:/usr/local/bin/hg
+
+#For Nginx or system command Settings 2012-02-13
+export PATH=/usr/local/sbin:$PATH
+
+#For Node.js settings
+#program lib Position
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+#export PATH=/usr/local/share/npm/bin:$PATH
+#export NODE_PATH=/usr/local/lib/node_modules
+#export NVM_DIR=~/.nvm
+if [[ -f ~/.nvm/nvm.sh ]] ; then source ~/.nvm/nvm.sh ; fi
+nvm use default
+npm_dir=${NVM_PATH}_modules
+export NODE_PATH=$npm_dir
+
+## ruby settings
+export PATH=$(brew --prefix ruby)/bin:$PATH
+if [[ -s ~/.rvm/scripts/rvm ]] ; then source ~/.rvm/scripts/rvm ; fi
+
+##C compiler settings
+##export CC=/usr/bin/gcc-4.2
+
+# Java settings
+#JAVA_HOME=/Library/Java/JavaVirtualMachines/1.6.0_65-b14-462.jdk/Contents/Home
+JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+export JAVA_HOME
+/usr/libexec/java_home
+#java for mac setting for nomalize BUILD comment
+alias javac='javac -J-Dfile.encoding=UTF-8'
+#export EC2_HOME EC2_CERT EC2_PRIVATE_KEY PATH
+
+#For Scala settings
+SCALA_HOME=/usr/local/Cellar/scala/2.11.2/libexec
+export PATH=$PATH:$SCALA_HOME/bin
+
+#For Mercurial settings 2012/04/29
+export HGENCODING=utf-8
+export LC_CTYPE=ja_JP.utf-8
+
+# Golang settings
+export GOROOT=`go env GOROOT`
+export GOPATH=$HOME/develop/gocode
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+export GOENVTARGET=$HOME/.goenvtarget
+export PATH=$GOENVTARGET:$PATH
+
+#Ocaml settings
+eval `opam config -env`
+
+#Haskell cabal settings
+export PATH=~/.cabal/bin:$PATH
+
+# texlive
+#export PATH=$PATH:/usr/local/texlive/2013/bin/universal-darwin
+
+# emscripten/LLVM settings
+export PATH=$HOME/develop/emscripten:$PATH
+
+#### brew settings : must be final-set option #####
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export PATH=/usr/local/bin:$PATH
+
+## for asciidoc -- a2x -- to pdf
+## it needs dblatex that already removed brew fomula, but try to install in another way below
+##curl -o /usr/local/Library/Formula/dblatex.rb https://gist.github.com/dustinschultz/6544364/raw/5bbe233fbe953b8070c5453fdf09cd65eb515e9e/dblatex.rb
+export XML_CATALOG_FILES=/usr/local/etc/xml/catalog
